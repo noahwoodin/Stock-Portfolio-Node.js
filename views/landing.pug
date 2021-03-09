@@ -1,0 +1,41 @@
+//Extend a layout for all pages?
+
+block styles
+    link(rel="stylesheet", href="/stylesheets/style.css")
+
+block content
+    h1 Landing Page!!!
+
+
+
+div.row
+    div.two-col
+        div.main-block
+            h1 Add to Portfolio
+            form(action="/", method="POST")
+                label(for='ticker') Ticker
+                input(type="text", name="ticker", id="ticker", placeholder="AC.TO", required)
+                label(for="shares") Shares
+                input(type="number", name="shares", id="shares", placeholder="1", min="1", required)
+                hr
+                //<div>
+                //<p>{{ message }}</p>
+                //</div>
+                div.btn-block
+                    button(type="submit") Add
+
+    <!--  View Portfolio-->
+    div.two-col
+        div.main-block
+            h1 My Portfolio
+            div.table-block
+
+
+<!--  Analyze button-->
+form(action="/view" method="POST")
+div.analyze-block
+    button(type="submit", href="/view", 'Analyze Portfolio')
+
+
+
+

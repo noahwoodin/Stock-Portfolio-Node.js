@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row">
+    <div class="two-col">
+        <div class="main-block">
+            <h1>Add to Portfolio</h1>
+            <form action="/" method="POST">
+                <label id="icon" for="ticker"><i class="fas fa-poll"></i></label>
+                <input type="text" name="ticker" id="ticker" placeholder="AC.TO" required/>
+                <label id="icon" for="shares"><i class="fas fa-hashtag"></i></label>
+                <input type="number" name="shares" id="shares" placeholder="1" min="1" required/>
+                <hr>
+                <div>
+                    <p>{{ message }}</p>
+                </div>
+                <div class="btn-block">
+                    <button type="submit" href="/">ADD</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!--  View Portfolio-->
+    <div class="two-col">
+        <div class="main-block">
+            <h1>My Portfolio</h1>
+            <div class="table-block">
+                <table>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>Shares</th>
+                    </tr>
+                    {% for row in data %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <form action="/" method="POST">
+                            <td> <button type="submit" name='delete' value={{row[2]}}>Delete</button></td>
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--  Analyze button-->
+<form action="/view" method="POST">
+    <div class="analyze-block">
+        <button type="submit" href="/view">Analyze Portfolio</button>
+    </div>
+</form>
+</body>
+</html>

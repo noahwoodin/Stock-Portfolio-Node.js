@@ -4,7 +4,6 @@ block styles
     link(rel="stylesheet", href="/stylesheets/style.css")
 
 block content
-    h1 Landing Page!!!
 
 
 
@@ -29,12 +28,31 @@ div.row
         div.main-block
             h1 My Portfolio
             div.table-block
+                table.center
+                    thead
+                        tr
+                            th Ticker
+                            th Shares
+                            th
+                    tbody
+                    each stock in current_portfolio
+                        tr
+                            td #{stock.ticker}
+                            td #{stock.shares}
+                            td
+                                form(action="/delete", method="POST")
+                                    input(type='hidden', name="deletes", id="deletes", value= stock.ticker)
+                                    div.btn-block
+                                        button(type="submit") Delete
+
 
 
 <!--  Analyze button-->
 form(action="/view" method="POST")
 div.analyze-block
-    button(type="submit", href="/view", 'Analyze Portfolio')
+    form(action="/view", method="POST")
+        div.btn-block
+            button(type="submit") Analyze Portfolio
 
 
 
